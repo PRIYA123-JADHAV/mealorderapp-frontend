@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu - TummyMealBox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin: 20px 0 10px;
+      color: #333;
+    }
+
+    .filter-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-bar button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .filter-bar button:hover {
+      background-color: #0056b3;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .menu-card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+    }
+
+    .menu-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .menu-card span {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .add-btn {
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    .add-btn:hover {
+      background: #218838;
+    }
+
+    .qty-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .qty-container button {
+      padding: 5px 10px;
+      font-size: 18px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .qty-container span {
+      margin: 0 10px;
+      font-size: 18px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .checkout-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>TummyMealBox Menu</h2>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <button onclick="filterCategory('All')">All</button>
+    <button onclick="filterCategory('Starters')">Starters</button>
+    <button onclick="filterCategory('Lunch')">Lunch</button>
+    <button onclick="filterCategory('Dinner')">Dinner</button>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu-grid" id="menuGrid"></div>
+
+  <!-- Checkout Button -->
+  <button class="checkout-btn" onclick="window.location.href='checkout.html'">Go to Checkout 🛒</button>
+
+  <script>
+  // Static menu items
+  const menuItems = [
+    { id: 1, name: "Vada pav", category: "Starters", price: 20, details: "vada pav", image: "images/food5.png" },
+    { id: 2, name: "Samosa", category: "Starters", price: 25, details: "crispy samosa", image: "images/food7.png" },
+    { id: 3, name: "Roti", category: "Lunch", price: 10, details: "roti", image: "images/food6.png" },
+    { id: 4, name: "Biryani", category: "Lunch", price: 150, details: "non-veg biryani", image: "images/food1.png" },
+    { id: 5, name: "Veg Biryani", category: "Dinner", price: 150, details: "veg biryani", image: "images/food2.png" },
+    { id: 6, name: "Gulab Jamun", category: "Dinner", price: 40, details: "sweet dish", image: "images/food4.png" }
+  ];
+
+
+
+    let quantities = {};
+
+    function renderMenu(items) {
+      const grid = document.getElementById("menuGrid");
+      grid.innerHTML = "";
+      items.forEach(item => {
+        grid.innerHTML += `
+          <div class="menu-card" data-category="${item.category}">
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.details}</p>
+            <span>₹${item.price}</span>
+            <div class="qty-container">
+              <button onclick="changeQty(${item.id}, -1)">−</button>
+              <span id="qty-${item.id}">1</span>
+              <button onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+            <button class="add-btn" onclick='addToCart(${JSON.stringify(item)})'>Add to Cart</button>
+          </div>
+        `;
+      });
+    }
+
+    function changeQty(id, change) {
+      if (!quantities[id]) quantities[id] = 1;
+      quantities[id] += change;
+      if (quantities[id] < 1) quantities[id] = 1;
+      document.getElementById("qty-" + id).innerText = quantities[id];
+    }
+
+    function addToCart(item) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const qty = quantities[item.id] || 1;
+      const existing = cart.find(p => p.id === item.id);
+
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        item.qty = qty;
+        cart.push(item);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(item.name + " added to cart!");
+    }
+
+    function filterCategory(category) {
+      if (category === "All") {
+        renderMenu(menuItems);
+      } else {
+        const filtered = menuItems.filter(item => item.category === category);
+        renderMenu(filtered);
+      }
+    }
+
+    // Initial render
+    renderMenu(menuItems);
+  </script>
+
+</body>
+</html>
