@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TummyMealBox - Verify OTP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      width: 360px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #7B1FA2;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .headline {
+      font-weight: 600;
+      margin: 10px 0 20px;
+    }
+
+    .otp-boxes {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .otp-boxes input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .btn {
+      background: #7B1FA2;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .resend {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .resend a {
+      color: #7B1FA2;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">🍱 TummyMealBox</div>
+    <div class="headline">Enter 4-digit OTP sent to your mobile</div>
+
+    <div class="otp-boxes">
+      <input type="text" maxlength="1" oninput="moveNext(this, 'otp2')" id="otp1" />
+      <input type="text" maxlength="1" oninput="moveNext(this, 'otp3')" id="otp2" />
+      <input type="text" maxlength="1" oninput="moveNext(this, 'otp4')" id="otp3" />
+      <input type="text" maxlength="1" id="otp4" />
+    </div>
+
+    <button class="btn" onclick="verifyOtp()">Verify & Continue</button>
+
+    <div class="resend">Didn't receive it? <a href="#">Resend OTP</a></div>
+  </div>
+
+  <script>
+    function moveNext(current, nextId) {
+      if (current.value.length === 1) {
+        document.getElementById(nextId).focus();
+      }
+    }
+
+    function verifyOtp() {
+      const otp = document.getElementById("otp1").value +
+                  document.getElementById("otp2").value +
+                  document.getElementById("otp3").value +
+                  document.getElementById("otp4").value;
+
+      if (otp.length === 4) {
+        alert("OTP Verified!");
+        window.location.href = "home.html"; // go to menu after OTP
+      } else {
+        alert("Please enter the complete 4-digit OTP.");
+      }
+    }
+  </script>
+
+</body>
+</html>

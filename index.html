@@ -1,69 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to TummyMealBox</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TummyMealBox - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #f8f9fa, #e8f5e9);
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       margin: 0;
-      padding: 0;
     }
 
     .container {
-      max-width: 600px;
-      margin: 80px auto;
+      background: #fff;
+      width: 360px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
       text-align: center;
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
-    h1 {
-      color: #28a745;
+    .logo {
+      font-size: 1.8rem;
+      color: #7B1FA2;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .headline {
+      font-weight: 600;
+      margin: 10px 0 20px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      font-size: 12px;
       margin-bottom: 20px;
+      color: #555;
     }
 
-    p {
-      font-size: 18px;
-      color: #333;
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
     }
 
     .btn {
-      display: inline-block;
-      margin: 15px 10px;
-      padding: 12px 25px;
-      font-size: 16px;
+      background: #7B1FA2;
       color: white;
-      background-color: #007bff;
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
       border: none;
       border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .terms {
+      font-size: 11px;
+      color: #888;
+      margin-top: 20px;
+    }
+
+    .terms a {
+      color: #7B1FA2;
       text-decoration: none;
-      transition: background-color 0.3s ease;
     }
 
-    .btn:hover {
-      background-color: #0056b3;
-    }
-
-    .btn.green {
-      background-color: #28a745;
-    }
-
-    .btn.green:hover {
-      background-color: #218838;
+    .skip {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 13px;
+      color: #7B1FA2;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
+  <div class="skip" onclick="window.location.href='menu.html'">Skip</div>
+
   <div class="container">
-    <h1>Welcome to TummyMealBox 🍽️</h1>
-    <p>Delicious food delivered with love!</p>
-    <a href="login.html" class="btn">Login</a>
-    <a href="register.html" class="btn green">Register</a>
+    <div class="logo">🍱 TummyMealBox</div>
+    <div class="headline">Login to unlock awesome benefits</div>
+
+    <div class="features">
+      <div>🎁 Offers</div>
+      <div>🏆 Rewards</div>
+      <div>💳 Easy Pay</div>
+    </div>
+
+    <input type="tel" placeholder="+91 Enter Mobile Number" id="mobile" />
+
+    <button class="btn" onclick="sendOtp()">Send OTP</button>
+
+    <div class="terms">
+      By proceeding, you agree to our <a href="#">Terms & Conditions</a>
+    </div>
   </div>
+
+  <script>
+    function sendOtp() {
+      const mobile = document.getElementById('mobile').value;
+      if (mobile.length >= 10) {
+        alert('OTP sent to ' + mobile);
+        window.location.href = "verify.html"; // next step
+      } else {
+        alert("Please enter a valid 10-digit mobile number.");
+      }
+    }
+  </script>
 
 </body>
 </html>
