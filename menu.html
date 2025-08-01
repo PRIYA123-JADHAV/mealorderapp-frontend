@@ -342,6 +342,18 @@ body {
 .checkout-btn:hover {
   background-color: #218838; /* Darker green on hover */
 }
+.filter-container {
+  margin-bottom: 15px;
+}
+
+.dish-card {
+  width: 200px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
 
 
   </style>
@@ -349,645 +361,570 @@ body {
 <body>
 
  
+<select id="filter">
+  <option value="all">All</option>
+  <option value="veg">Veg</option>
+  <option value="nonveg">Non-Veg</option>
+</select>
 
-  
-  <!-- Menu Section -->
-  <div class="menu-section">
-    <div class="menu-title" style="margin-left: 600px; text-size-adjust: 200px;">🍽️ Our Menu</div>
-    <div class="cards-container">
+
+ <!-- Menu Section -->
+<div class="menu-section">
+  <div class="menu-title" style="margin-left: 600px;">🍽️ Our Menu</div>
+  <div class="cards-container">
      
     <!-- Dish 1 -->
-<div class="card">
-  <div class="image-container">
-    <img src="images/paneer-tikka.png" alt="Paneer Tikka">
-    <div class="badge">Chef's Special</div>
-  </div>
-  <div class="card-content">
-    <h4 class="item-name">Paneer Tikka</h4>
-    <p>Grilled cottage cheese with spices</p>
-    <div class="price-btn">
-      <div class="price">₹180</div>
-    </div>
-
-    <!-- ✅ Fixed button container class to avoid CSS conflict -->
-    <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/paneer-tikka.png" alt="Paneer Tikka">
+        <div class="badge">Chef's Special</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Paneer Tikka</h4>
+        <p>Grilled cottage cheese with spices</p>
+        <div class="price-btn"><div class="price">₹180</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Dish 2 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/veg-biryani.png" alt="Veg Biryani">
+        <div class="badge">Bestseller</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Veg Biryani</h4>
+        <p>Fragrant rice with veggies & masala</p>
+        <div class="price-btn"><div class="price">₹150</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 3 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/nan.png" alt="Butter Naan">
+        <div class="badge">Hot Deal</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Butter Naan Set</h4>
+        <p>2 Naan + Paneer Butter Masala</p>
+        <div class="price-btn"><div class="price">₹210</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 4 -->
+    <div class="card dish-card" data-category="nonveg">
+      <div class="image-container">
+        <img src="images/kofta.png" alt="Spicy Kofta">
+        <div class="badge">Chef's Choice</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Spicy Kofta</h4>
+        <p>Hot gravy with kofta balls</p>
+        <div class="price-btn"><div class="price">₹160</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 5 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/dosa.png" alt="Masala Dosa">
+        <div class="badge">South Indian</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Masala Dosa</h4>
+        <p>Crispy dosa with spiced potato filling</p>
+        <div class="price-btn"><div class="price">₹130</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 6 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/chilli.png" alt="Chilli Paneer">
+        <div class="badge">Spicy Treat</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Chilli Paneer</h4>
+        <p>Paneer cubes tossed in spicy sauce</p>
+        <div class="price-btn"><div class="price">₹170</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 
-      <!-- Dish 2 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/veg-biryani.png" alt="Veg Biryani">
-          <div class="badge">Bestseller</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Veg Biryani</h4>
-          <p>Fragrant rice with veggies & masala</p>
-          <div class="price-btn">
-            <div class="price">₹150</div>
-          </div>
-
-          <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
-        </div>
-      </div>
-
-      <!-- Dish 3 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/nan.png" alt="Butter Naan">
-          <div class="badge">Hot Deal</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Butter Naan Set</h4>
-          <p>2 Naan + Paneer Butter Masala</p>
-          <div class="price-btn">
-            <div class="price">₹210</div>
-            
-          </div>
-       <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
-        </div>
-      </div>
-
-      <!-- Dish 4 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/kofta.png" alt="Spicy Kofta">
-          <div class="badge">Chef's Choice</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Spicy Kofta</h4>
-          <p>Hot gravy with veg kofta balls</p>
-          <div class="price-btn">
-            <div class="price">₹160</div>
-            
-          </div>
-        <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
-        </div>
-      </div>
-
-      <!-- Dish 5 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/dosa.png" alt="Masala Dosa">
-          <div class="badge">South Indian</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Masala Dosa</h4>
-          <p>Crispy dosa with spiced potato filling</p>
-          <div class="price-btn">
-            <div class="price">₹130</div>
-           
-          </div>
-
-           <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
-        </div>
-      </div>
-
-      <!-- Dish 6 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/chilli.png" alt="Chilli Paneer">
-          <div class="badge">Spicy Treat</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Chilli Paneer</h4>
-          <p>Paneer cubes tossed in spicy sauce</p>
-          <div class="price-btn">
-            <div class="price">₹170</div>
-            
-          </div>
-            <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
-      </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-
 
   <!-- Menu Section -->
-  <div class="menu-section">
-    <div class="menu-title" style="margin-left: 600px;">🍽️ Starters</div>
-    <div class="cards-container">
+<div class="menu-section">
+  <div class="menu-title" style="margin-left: 600px;">🍽️ Starters</div>
+  <div class="cards-container">
       
-      <!-- Dish 1 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/spring.png" alt="Spring Rolls">
-          <div class="badge">starters</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Spring Rolls</h4>
-          <p>Veggie-filled crispy rolls</p>
-          <div class="price-btn">
-            <div class="price">₹180</div>
-           
+    <!-- Dish 1 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/spring.png" alt="Spring Rolls">
+        <div class="badge">Starters</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Spring Rolls</h4>
+        <p>Veggie-filled crispy rolls</p>
+        <div class="price-btn"><div class="price">₹180</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-          <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 2 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/hara.png" alt="Hara Bhara Kebab">
-          <div class="badge">Bestseller</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Hara Bhara Kebab</h4>
-          <p>Healthy green veggie patties</p>
-          <div class="price-btn">
-            <div class="price">₹150</div>
-            
+    <!-- Dish 2 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/hara.png" alt="Hara Bhara Kebab">
+        <div class="badge">Bestseller</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Hara Bhara Kebab</h4>
+        <p>Healthy green veggie patties</p>
+        <div class="price-btn"><div class="price">₹150</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-           <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 3 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/balls.png" alt="Cheese Balls">
-          <div class="badge">crispy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Cheese Balls</h4>
-          <p>Cheesy and crispy bites</p>
-          <div class="price-btn">
-            <div class="price">₹120</div>
-            
+    <!-- Dish 3 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/balls.png" alt="Cheese Balls">
+        <div class="badge">Crispy</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Cheese Balls</h4>
+        <p>Cheesy and crispy bites</p>
+        <div class="price-btn"><div class="price">₹120</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-             <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 4 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/paneer-pakoda.png" alt="Crispy">
-          <div class="badge">Crispy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Paneer Pakora</h4>
-          <p>Fried paneer fritters with chutney</p>
-          <div class="price-btn">
-            <div class="price">₹160</div>
-           
+    <!-- Dish 4 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/paneer-pakoda.png" alt="Paneer Pakora">
+        <div class="badge">Crispy</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Paneer Pakora</h4>
+        <p>Fried paneer fritters with chutney</p>
+        <div class="price-btn"><div class="price">₹160</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-           <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 5 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/papd.png" alt="papad">
-          <div class="badge">Special</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Masala papad</h4>
-          <p>Crispy Masala Papad</p>
-          <div class="price-btn">
-            <div class="price">₹20</div>
-            
+    <!-- Dish 5 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/papd.png" alt="Masala Papad">
+        <div class="badge">Special</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Masala Papad</h4>
+        <p>Crispy Masala Papad</p>
+        <div class="price-btn"><div class="price">₹20</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-             <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 6 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/chilli.png" alt="Chilli Paneer">
-          <div class="badge">Spicy Treat</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Chilli Paneer</h4>
-          <p>Paneer cubes tossed in spicy sauce</p>
-          <div class="price-btn">
-            <div class="price">₹170</div>
-            
+    <!-- Dish 6 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/chilli.png" alt="Chilli Paneer">
+        <div class="badge">Spicy Treat</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Chilli Paneer</h4>
+        <p>Paneer cubes tossed in spicy sauce</p>
+        <div class="price-btn"><div class="price">₹170</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-           <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
-      </div>
-    </div>
         </div>
       </div>
-
-    
     </div>
+
   </div>
+</div>
+
 
   <!-- Horizontal Scroll Bar -->
   <div class="scroll-bar" style="color: gold;"></div>
 </div>
 
 <!-- Menu Section -->
-  <div class="menu-section">
-    <div class="menu-title" style="margin-left: 600px;">🍽️ Lunch</div>
-    <div class="cards-container">
+<div class="menu-section">
+  <div class="menu-title" style="margin-left: 600px;">🍽️ Lunch</div>
+  <div class="cards-container">
       
-      <!-- Dish 1 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/spring.png" alt="Spring Rolls">
-          <div class="badge">lunch</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">Spring Rolls</h4>
-          <p>Veggie-filled crispy rolls</p>
-          <div class="price-btn">
-            <div class="price">₹180</div>
-          
+    <!-- Dish 1 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/spring.png" alt="Spring Rolls">
+        <div class="badge">Starters</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Spring Rolls</h4>
+        <p>Veggie-filled crispy rolls</p>
+        <div class="price-btn"><div class="price">₹180</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-           <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 2 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/paratha.png" alt="paratha">
-          <div class="badge">Bestseller</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name"><potato-paratha></potato-paratha></h4>
-          <p>Healthy potato-paratha</p>
-          <div class="price-btn">
-            <div class="price">₹150</div>
-          
+    <!-- Dish 2 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/hara.png" alt="Hara Bhara Kebab">
+        <div class="badge">Bestseller</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Hara Bhara Kebab</h4>
+        <p>Healthy green veggie patties</p>
+        <div class="price-btn"><div class="price">₹150</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-          <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 3 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/balls.png" alt="Cheese Balls">
+        <div class="badge">Crispy</div>
       </div>
-
-      <!-- Dish 3 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/kathi-roll.png" alt="kathi-roll">
-          <div class="badge">crispy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">kathi-roll</h4>
-          <p>Cheesy and crispy bites</p>
-          <div class="price-btn">
-            <div class="price">₹120</div>
-            
+      <div class="card-content">
+        <h4 class="item-name">Cheese Balls</h4>
+        <p>Cheesy and crispy bites</p>
+        <div class="price-btn"><div class="price">₹120</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 4 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/kaju-kari.png" alt="Crispy">
-          <div class="badge">testy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">kaju-kari</h4>
-          <p>Fried kaju fritters with chutney</p>
-          <div class="price-btn">
-            <div class="price">₹160</div>
-           
+    <!-- Dish 4 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/paneer-pakoda.png" alt="Paneer Pakora">
+        <div class="badge">Crispy</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Paneer Pakora</h4>
+        <p>Fried paneer fritters with chutney</p>
+        <div class="price-btn"><div class="price">₹160</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-  <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 5 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/papd.png" alt="Masala Papad">
+        <div class="badge">Special</div>
       </div>
-
-      <!-- Dish 5 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/aloo-gobi.png" alt="aloo-gobi">
-          <div class="badge">Special</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">aloo-gobi</h4>
-          <p>aloo-gobi mixture/p>
-          <div class="price-btn">
-            <div class="price">₹20</div>
-            
+      <div class="card-content">
+        <h4 class="item-name">Masala Papad</h4>
+        <p>Crispy Masala Papad</p>
+        <div class="price-btn"><div class="price">₹20</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 6 -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/chilli.png" alt="Chilli Paneer">
+        <div class="badge">Spicy Treat</div>
       </div>
-
-      <!-- Dish 6 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/pipe.png" alt="pineapple">
-          <div class="badge">spices</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">pineapple-Rice</h4>
-          <p>added more ingrediants</p>
-          <div class="price-btn">
-            <div class="price">₹180</div>
-            
+      <div class="card-content">
+        <h4 class="item-name">Chilli Paneer</h4>
+        <p>Paneer cubes tossed in spicy sauce</p>
+        <div class="price-btn"><div class="price">₹170</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-    
+  </div>
+</div>
+
     </div>
   </div>
+
  <!-- Horizontal Scroll Bar -->
   <div class="scroll-bar" style="color: gold;"></div>
 </div>
 
 <!-- Menu Section -->
-  <div class="menu-section">
-    <div class="menu-title" style="margin-left: 600px;">🍽️ spicy</div>
-    <div class="cards-container">
+<div class="menu-section">
+  <div class="menu-title" style="margin-left: 600px;">🍽️ Spicy</div>
+  <div class="cards-container">
       
-      <!-- Dish 1 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/veg-man.png" alt="veg-manchurian">
-          <div class="badge">veg-manchurian</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">manchurian</h4>
-          <p>best spicy dish</p>
-          <div class="price-btn">
-            <div class="price">₹150</div>
-           
+    <!-- Dish 1 (Veg) -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/veg-man.png" alt="Veg Manchurian">
+        <div class="badge">Veg Manchurian</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Veg Manchurian</h4>
+        <p>Best spicy veg dish</p>
+        <div class="price-btn"><div class="price">₹150</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-          <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
 
-      <!-- Dish 2 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/non-vegman.png" alt="veg-manchuria">
-          <div class="badge">Bestseller</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name"><potato-paratha>non-veg-manchurian</potato-paratha></h4>
-          <p>non-veg-manchurian</p>
-          <div class="price-btn">
-            <div class="price">₹150</div>
-         
+    <!-- Dish 2 (Non-Veg) -->
+    <div class="card dish-card" data-category="nonveg">
+      <div class="image-container">
+        <img src="images/non-vegman.png" alt="Non-Veg Manchurian">
+        <div class="badge">Bestseller</div>
+      </div>
+      <div class="card-content">
+        <h4 class="item-name">Non-Veg Manchurian</h4>
+        <p>Spicy non-veg manchurian</p>
+        <div class="price-btn"><div class="price">₹150</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-  <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 3 (Veg) -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/noodles.png" alt="Noodles">
+        <div class="badge">Spicy</div>
       </div>
-
-      <!-- Dish 3 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/noodles.png" alt="noodles">
-          <div class="badge">spicy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">noodles</h4>
-          <p>veg noodles</p>
-          <div class="price-btn">
-            <div class="price">₹120</div>
-           
+      <div class="card-content">
+        <h4 class="item-name">Noodles</h4>
+        <p>Veg noodles with spices</p>
+        <div class="price-btn"><div class="price">₹120</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 4 (Non-Veg) -->
+    <div class="card dish-card" data-category="nonveg">
+      <div class="image-container">
+        <img src="images/szechuan-chicken.png" alt="Szechuan Chicken">
+        <div class="badge">Tasty</div>
       </div>
-
-      <!-- Dish 4 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/szechuan-chicken.png" alt="Crispy">
-          <div class="badge">testy</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">szechuan-chicken</h4>
-          <p>szechuan-chicken</p>
-          <div class="price-btn">
-            <div class="price">₹160</div>
-            
+      <div class="card-content">
+        <h4 class="item-name">Szechuan Chicken</h4>
+        <p>Spicy szechuan-style chicken</p>
+        <div class="price-btn"><div class="price">₹160</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 5 (Veg) -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/ss.png" alt="Spicy Snack">
+        <div class="badge">Special</div>
       </div>
-
-      <!-- Dish 5 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/ss.png" alt="sjhgsd">
-          <div class="badge">Special</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">hsks</h4>
-          <p>sh sjs asjh/p>
-          <div class="price-btn">
-            <div class="price">₹20</div>
-           
+      <div class="card-content">
+        <h4 class="item-name">Spicy Snack</h4>
+        <p>Hot and crispy snack</p>
+        <div class="price-btn"><div class="price">₹20</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
+
+    <!-- Dish 6 (Veg) -->
+    <div class="card dish-card" data-category="veg">
+      <div class="image-container">
+        <img src="images/pipe.png" alt="Pineapple Rice">
+        <div class="badge">Spices</div>
       </div>
-
-      <!-- Dish 6 -->
-      <div class="card">
-        <div class="image-container">
-          <img src="images/pipe.png" alt="pineapple">
-          <div class="badge">spices</div>
-        </div>
-        <div class="card-content">
-          <h4 class="item-name">pineapple-Rice</h4>
-          <p>added more ingrediants</p>
-          <div class="price-btn">
-            <div class="price">₹180</div>
-           
+      <div class="card-content">
+        <h4 class="item-name">Pineapple Rice</h4>
+        <p>Added more ingredients</p>
+        <div class="price-btn"><div class="price">₹180</div></div>
+        <div class="item-buttons">
+          <button class="add-btn">Add +</button>
+          <div class="quantity-control">
+            <button class="qty-btn decrement">−</button>
+            <span class="count">1</span>
+            <button class="qty-btn increment">+</button>
           </div>
-
-         <div class="item-buttons">
-      <button class="add-btn">Add +</button>
-      <div class="quantity-control">
-        <button class="qty-btn decrement">−</button>
-        <span class="count">1</span>
-        <button class="qty-btn increment">+</button>
+        </div>
       </div>
     </div>
-        </div>
-      </div>
+
+  </div>
+</div>
+
+
 
     
-    </div>
-  </div>
  <!-- Horizontal Scroll Bar -->
   <div class="scroll-bar" style="color: gold;"></div>
 </div>
+
 
 <!-- Menu Section -->
   <div class="menu-section">
@@ -995,7 +932,7 @@ body {
     <div class="cards-container">
       
       <!-- Dish 1 -->
-      <div class="card">
+     <div class="card dish-card" data-category="nonveg">
         <div class="image-container">
           <img src="images/non-veg.png" alt="non-veg">
           <div class="badge">non-veg</div>
@@ -1020,7 +957,7 @@ body {
       </div>
 
       <!-- Dish 2 -->
-      <div class="card">
+      <div class="card dish-card" data-category="nonveg">
         <div class="image-container">
           <img src="images/tandori-chiken.png" alt="ta">
           <div class="badge">Bestseller</div>
@@ -1045,7 +982,7 @@ body {
       </div>
 
       <!-- Dish 3 -->
-      <div class="card">
+     <div class="card dish-card" data-category="veg">
         <div class="image-container">
           <img src="images/roti.png" alt="roti">
           <div class="badge">crispy</div>
@@ -1070,7 +1007,7 @@ body {
       </div>
 
       <!-- Dish 4 -->
-      <div class="card">
+    <div class="card dish-card" data-category="veg">
         <div class="image-container">
           <img src="images/kaju-kari.png" alt="Crispy">
           <div class="badge">testy</div>
@@ -1095,7 +1032,7 @@ body {
       </div>
 
       <!-- Dish 5 -->
-      <div class="card">
+      <div class="card dish-card" data-category="veg">
         <div class="image-container">
           <img src="images/aloo-gobi.png" alt="aloo-gobi">
           <div class="badge">Special</div>
@@ -1120,7 +1057,7 @@ body {
       </div>
 
       <!-- Dish 6 -->
-      <div class="card">
+      <div class="card dish-card" data-category="nonveg">
         <div class="image-container">
           <img src="images/pipe.png" alt="pineapple">
           <div class="badge">spices</div>
@@ -1152,7 +1089,6 @@ body {
 
 
 
-
  
    <a href="checkout.html" class="checkout-btn" style="margin-left: 600px"    >Go to Checkout 🛒</a>
  
@@ -1170,7 +1106,34 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { modal.style.display = "none"; }, 2000);
   }
 
-  // Add dish
+  // ✅ Filter Function
+  const filterDropdown = document.getElementById("filter");
+  if (filterDropdown) {
+    filterDropdown.addEventListener("change", function () {
+      const filterValue = this.value.toLowerCase();
+
+      // Get all menu sections
+      document.querySelectorAll(".menu-section").forEach(section => {
+        let dishes = section.querySelectorAll(".dish-card");
+        let anyVisible = false;
+
+        dishes.forEach(dish => {
+          const category = dish.getAttribute("data-category").toLowerCase();
+          if (filterValue === "all" || filterValue === category) {
+            dish.style.display = "block";
+            anyVisible = true;
+          } else {
+            dish.style.display = "none";
+          }
+        });
+
+        // Hide section if no dishes are visible
+        section.style.display = anyVisible ? "block" : "none";
+      });
+    });
+  }
+
+  // ✅ Add dish
   document.querySelectorAll(".add-btn").forEach(button => {
     button.addEventListener("click", function () {
       const card = this.closest(".card");
@@ -1187,7 +1150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Increment quantity
+  // ✅ Increment quantity
   document.querySelectorAll(".increment").forEach(btn => {
     btn.addEventListener("click", function () {
       const card = this.closest(".card");
@@ -1197,12 +1160,12 @@ document.addEventListener("DOMContentLoaded", () => {
       countEl.textContent = count;
 
       const item = cart.find(d => d.name === name);
-      if(item) item.quantity = count;
+      if (item) item.quantity = count;
       localStorage.setItem("cart", JSON.stringify(cart));
     });
   });
 
-  // Decrement quantity
+  // ✅ Decrement quantity
   document.querySelectorAll(".decrement").forEach(btn => {
     btn.addEventListener("click", function () {
       const card = this.closest(".card");
@@ -1213,7 +1176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (count > 1) {
         countEl.textContent = count - 1;
         const item = cart.find(d => d.name === name);
-        if(item) item.quantity = count - 1;
+        if (item) item.quantity = count - 1;
       } else {
         this.parentElement.style.display = "none";
         card.querySelector(".add-btn").style.display = "inline-block";
@@ -1224,6 +1187,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+
+
 
 </body>
 </html>
